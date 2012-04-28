@@ -1,0 +1,53 @@
+div
+  span#gamestatus Anyone may select a piece to give to start the game.
+div
+  div#selectedbox Selected
+    div#selected
+  div#buttonbox
+    button#undobutton Undo Move
+    button#newgamebutton New Game
+  div#boardcont
+    img(src='images/board.png')#board
+    div#s1.piecespace
+    div#s2.piecespace
+    div#s3.piecespace
+    div#s4.piecespace
+    div#s5.piecespace
+    div#s6.piecespace
+    div#s7.piecespace
+    div#s8.piecespace
+    div#s9.piecespace
+    div#s10.piecespace
+    div#s11.piecespace
+    div#s12.piecespace
+    div#s13.piecespace
+    div#s14.piecespace
+    div#s15.piecespace
+    div#s16.piecespace
+  div#chat
+    p connecting...
+  form#form
+    input(type='text', autocomplete='off')#text
+    input(type='submit') Send
+div#unplayed
+  img(src='images/srdh.png')#srdh
+  img(src='images/srds.png')#srds
+  img(src='images/srlh.png')#srlh
+  img(src='images/srls.png')#srls
+  img(src='images/ssdh.png')#ssdh
+  img(src='images/ssds.png')#ssds
+  img(src='images/sslh.png')#sslh
+  img(src='images/ssls.png')#ssls
+  img(src='images/trdh.png')#trdh
+  img(src='images/trds.png')#trds
+  img(src='images/trlh.png')#trlh
+  img(src='images/trls.png')#trls
+  img(src='images/tsdh.png')#tsdh
+  img(src='images/tsds.png')#tsds
+  img(src='images/tslh.png')#tslh
+  img(src='images/tsls.png')#tsls
+script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js')
+script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js')
+script(src='/socket.io/socket.io.js')      
+script(src='/javascripts/gamelogic.js')
+script(src='/javascripts/gameui.js')  
