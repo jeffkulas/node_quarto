@@ -1,0 +1,48 @@
+var exports;
+var GAME = exports || {};
+
+GAME.playHistory = [];
+GAME.player1 = "player1";
+GAME.player2 = "player2";
+GAME.waitingOn = "";
+GAME.moveType = "select"; //select or place
+GAME.selectedPieceId = null;
+GAME.messages = ["Anyone may select a piece to start the game.",
+			"p$ selected a piece. Anyone else may play the piece.",
+			"p$ turn to select a piece.",
+			"p$ turn to play the selected piece."
+			];
+GAME.makeMove = function(mv) {
+		//*** validate the move
+		console.log(mv.moveType);
+		this.playHistory.push(mv);
+		switch (mv.moveType) {
+			case "select":
+				this.moveType = "place";
+				if (mv.whoName === this.player1 && this.player2 != "player2") {
+					waitingOn = this.player2;
+				} else {
+					if (this.player2 != "player2") {
+						waitingOn = this.player1;
+					}
+				}
+				this.selectedPieceId = mv.pieceId;
+				break;
+			case "place": 
+				this.moveType = "select";
+				this.selectedPieceId = null;
+				break;
+			case "reset":
+				this.restart();
+		}
+		
+	};
+GAME.restart = function() {
+		console.log('restart called');
+		this.playHistory = [];
+		this.player1 = "player1";
+		this.player2 = "player2";
+		this.waitingOn = "";
+		this.turnType = "select";
+		this.selectedPiece = null;
+	};
