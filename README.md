@@ -18,4 +18,4 @@ run the server
 
 connect to the server with a web browser or 2
 
-```http://localhost:3000```
+http://localhost:3000
