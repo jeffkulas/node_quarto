@@ -1,7 +1,7 @@
-#gamestatus { font-size: 1.5em; }
-#selectedbox { border: 2px solid black; padding: 4px; margin: 20px; width: 52px; position: absolute; }
-#buttonbox { padding: 4px; margin: 20px; width: 52px; position: absolute; top: 250px;}
+#gamestatus { font-size: 1.5em; margin: 20px; top: 2px;}
+#selectedbox { border: 2px solid black; padding: 4px; margin: 20px; width: 52px; position: absolute; top: 40px;}
 #selected { border: 1px solid black; width: 50px; height: 89px;}
+#buttonbox { padding: 4px; margin: 20px; width: 52px; position: absolute; top: 250px;}
 #boardcont { padding: 20px 5px 5px 25px; top: 35px; left: 200 px; position: absolute; left: 100px; top: 36px; }
 .piecespace { border: 0px solid black; width: 50px; height: 89px; position: absolute; }
 #s1 { top: 170px; left: 46px; }
@@ -40,8 +40,9 @@
 #tslh {left: 700px;}
 #tsls {left: 750px;}
 
-#chat {  position: absolute; left: 600px; top: 130px; height: 280px; overflow: auto; width: 200px; border: 1px solid #222; font: 13px Helvetica, Arial; }
-#chat p { padding: 8px; margin: 0; }
-#chat p:nth-child(odd) { background: #A6A6A6; }
-#form {  position: absolute; top: 430px; left: 600px; width: 200px; background: #fff; }
-#form input[type=text] { width: 120px; padding: 5px; }
+#chat {  position: absolute; left: 600px; top: 60px; height: 368px; overflow: auto; width: 200px; border:1px solid #222; padding: 2px;}
+#chat p { padding: 3px; margin: 0; }
+#chat p:nth-child(odd) { background: #C6C6C6; }
+#form {  position: absolute; top: 440px; left: 600px; width: 200px; background: #fff; }
+#form input[type=text] { width: 150px; padding: 5px; }
+#form input[type=submit] {  position: absolute; right: -4px; padding: 5px;}

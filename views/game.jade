@@ -1,11 +1,10 @@
 div
-  span#gamestatus Anyone may select a piece to give to start the game.
+  span#gamestatus Anyone may select a piece to start the game.
 div
   div#selectedbox Selected
     div#selected
   div#buttonbox
-    button#undobutton Undo Move
-    button#newgamebutton New Game
+    button#newgamebutton.btn New Game
   div#boardcont
     img(src='images/board.png')#board
     div#s1.piecespace
@@ -24,11 +23,11 @@ div
     div#s14.piecespace
     div#s15.piecespace
     div#s16.piecespace
-  div#chat
+  div#chat.well
     p connecting...
   form#form
     input(type='text', autocomplete='off')#text
-    input(type='submit', value='Say')
+    input(type='submit', value='Say')#say.btn
 div#unplayed
   img(src='images/srdh.png')#srdh
   img(src='images/srds.png')#srds
