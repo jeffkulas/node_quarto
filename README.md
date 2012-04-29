@@ -9,8 +9,8 @@ clone the git repo
 
 pull in the dependancies
 
-```cd node_quarto
-npm install -d```
+```cd node_quarto```
+```npm install -d```
 
 run the server
 
