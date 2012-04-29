@@ -5,7 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , io = require('socket.io')
+  , sio = require('socket.io')
   , GAME = require('./public/javascripts/gamelogic.js')  ;
 
 var app = module.exports = express.createServer();
@@ -37,32 +37,35 @@ app.get('/game', routes.game);
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
-
-
-var sio = io.listen(app),
-    buffer = [];
+var io = sio.listen(app)
+  , buffer = []
+  , playerID = 0;
   
-sio.on('connection', function(socket){
-    console.log('A socket with sessionID ' + socket.handshake.sessionID + ' connected!');  
-  if (GAME.playHistory.length > 0) socket.send({playHistory : GAME.playHistory});
-  socket.send({ buffer: buffer });
-  sio.sockets.emit({ announcement: socket.handshake.sessionId + ' connected' });
+io.sockets.on('connection', function(socket){
+  console.log('connection');  
+  if (GAME.playHistory.length > 0) socket.emit('move', {playHistory : GAME.playHistory});
+  socket.emit('message', { buffer: buffer });
+  socket.playerID = playerID++;
+  socket.broadcast.emit('message', { announcement: socket.playerID + ' connected' });
   
-  socket.on('message', function(message){
-  if (message.moveType) {
-    // *** validate the move,
-    // at least make sure the move from is from the right session
-    sio.sockets.emit(message);
-    GAME.makeMove(message);
-  } else {
-      var msg = { message: [socket.handshake.sessionId, message] };
-      buffer.push(msg);
-      if (buffer.length > 15) buffer.shift();
-      sio.sockets.emit(msg);
-  }
+  socket.on('message', function(message) {
+    console.log('message ' + message);  
+    var msg = { message: [socket.playerID, message] };
+    buffer.push(msg);
+    if (buffer.length > 15) buffer.shift();
+    socket.broadcast.emit('message', msg);
   });
 
+  socket.on('move', function(move) {
+      console.log('message-move');  
+      // *** validate the move,
+      // at least make sure the move from is from the right session
+      socket.broadcast.emit('move', move);
+      GAME.makeMove(move);
+  });
+
+
   socket.on('disconnect', function(){
-    sio.sockets.emit({ announcement: socket.handshake.sessionId + ' disconnected' });
+    io.sockets.emit({ announcement: socket.playerID + ' disconnected' });
   });
 });

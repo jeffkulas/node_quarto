@@ -22,7 +22,7 @@
 #s16 { top: 170px; left: 376px; }
 
 #unplayed { position: absolute; top: 500px; }
-#unplayed img {position: absolute; top 500px;}
+#unplayed img {position: absolute; }
 #srdh {left: 0px;}
 #srds {left: 50px;}
 #srlh {left: 100px;}
@@ -42,9 +42,6 @@
 
 #chat {  position: absolute; left: 600px; top: 130px; height: 280px; overflow: auto; width: 200px; border: 1px solid #222; font: 13px Helvetica, Arial; }
 #chat p { padding: 8px; margin: 0; }
-#chat p:nth-child(odd) { background: #F6F6F6; }
+#chat p:nth-child(odd) { background: #A6A6A6; }
 #form {  position: absolute; top: 430px; left: 600px; width: 200px; background: #fff; }
-#form input[type=text] { width: 120px; padding: 5px; background: #fff; border: 1px solid #222; }
-#form input[type=submit] { cursor: pointer; background: #999; border: none; padding: 6px 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; margin-left: 5px; text-shadow: 0 1px 0 #fff; }
-#form input[type=submit]:hover { background: #A2A2A2; }
-#form input[type=submit]:active { position: relative; top: 2px; }
+#form input[type=text] { width: 120px; padding: 5px; }
