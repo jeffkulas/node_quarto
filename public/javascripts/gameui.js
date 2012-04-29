@@ -16,13 +16,18 @@ function message(obj){
     // *** make GAME update by connecting gamelogic to gameui with events
     updateBoard(obj);
   } else {
-    var el = document.createElement('p');
-    if (obj.announcement) el.innerHTML = '<em>' + esc(obj.announcement) + '</em>';
-    else if (obj.message) el.innerHTML = '<b>' + esc(obj.message[0]) + ':</b> ' + esc(obj.message[1]);
+    var el = $(document.createElement('p'));
+    if (obj.announcement) {
+      el.append($(document.createElement('em'))).text(obj.announcement);
+    } else {
+      if (obj.message) {
+        el.append($(document.createElement('b')).text(obj.message[0] + ': '), $(document.createElement('span')).text(obj.message[1])); // *** TODO losing the b tag here
+      }
+    } 
     
     if( obj.message && window.console && console.log ) console.log(obj.message[0], obj.message[1]);
-    document.getElementById('chat').appendChild(el);
-    document.getElementById('chat').scrollTop = 1000000;
+    $('#chat').append(el);
+    $('#chat').scrollTop(1000000);
   }
 }
 
@@ -32,11 +37,6 @@ function send(){
   message({ message: ['you', val] });
   document.getElementById('text').value = '';
 }
-      
-function esc(msg){
-  return msg;
-  //return msg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-};
 
 var socket = io.connect();
 
