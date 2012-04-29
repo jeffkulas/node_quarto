@@ -1,6 +1,6 @@
 # node_quarto
 
-Simple game to show node.js and socket.io in action. Based off of the board game [Quarto]: <http://en.wikipedia.org/wiki/Quarto_(board_game)>.
+Simple game to show node.js and socket.io in action. Based off of the board game [Quarto] <http://en.wikipedia.org/wiki/Quarto_(board_game)>.
 
 You can chat with the other player and see the pieces move. The server doesn't enforce the game rules yet or help decide who wins.
 
