@@ -1,9 +1,12 @@
-h1= title
-p Welcome to #{title}
-p #{title} is a simple, 2 player game where you attempt to line up 4 game pieces on a 4 x 4 game
-  | board with the same attribute. Each piece has four attributes value posibilities: short|tall, 
-  | light|dark, solid|hole, square|round.
-p All you have to do is line up four pieces that have the same value for one of the four attributes. Easy enough, right? The catch is
-  | that the other player gets to decide what piece you place on the board, and you get to decide what piece the other player places on the board.
-p This web site allows 2 people to play quarto against eachother. This is obviously not very scalable, but it makes for a nice demo of node.js and socket.io.
-a(href='/game', title='Play #{title} Now') Play #{title}
+div.container
+  div.row
+    div.span8
+      h1= title
+      p Welcome to #{title}
+      p #{title} is a simple, 2 player game where you attempt to line up 4 game pieces on a 4 x 4 game
+        | board with the same attribute. Each piece has four attributes value posibilities: short|tall, 
+        | light|dark, solid|hole, square|round.
+      p All you have to do is line up four pieces that have the same value for one of the four attributes. Easy enough, right? The catch is
+        | that the other player gets to decide what piece you place on the board, and you get to decide what piece the other player places on the board.
+      p This web site allows 2 people to play quarto against eachother. This is obviously not very scalable, but it makes for a nice demo of node.js and socket.io.
+      a(href='/game', title='Play #{title} Now') Play #{title}

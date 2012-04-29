@@ -3,7 +3,7 @@
 #buttonbox { padding: 4px; margin: 20px; width: 52px; position: absolute; top: 250px;}
 #selected { border: 1px solid black; width: 50px; height: 89px;}
 #boardcont { padding: 20px 5px 5px 25px; top: 35px; left: 200 px; position: absolute; left: 100px; top: 36px; }
-.piecespace { border: 1px solid black; width: 50px; height: 89px; position: absolute; }
+.piecespace { border: 0px solid black; width: 50px; height: 89px; position: absolute; }
 #s1 { top: 170px; left: 46px; }
 #s2 { top: 118px; left: 101px; }
 #s3 { top: 222px; left: 101px; }
