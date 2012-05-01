@@ -42,14 +42,12 @@ var io = sio.listen(app)
   , playerID = 0;
   
 io.sockets.on('connection', function(socket){
-  console.log('connection');  
   if (GAME.playHistory.length > 0) socket.emit('move', {playHistory : GAME.playHistory});
   socket.emit('message', { buffer: buffer });
   socket.playerID = playerID++;
   socket.broadcast.emit('message', { announcement: socket.playerID + ' connected' });
   
   socket.on('message', function(message) {
-    console.log('message ' + message);  
     var msg = { message: [socket.playerID, message] };
     buffer.push(msg);
     if (buffer.length > 15) buffer.shift();
@@ -57,7 +55,6 @@ io.sockets.on('connection', function(socket){
   });
 
   socket.on('move', function(move) {
-      console.log('message-move');  
       // *** validate the move,
       // at least make sure the move from is from the right session
       socket.broadcast.emit('move', move);

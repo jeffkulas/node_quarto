@@ -25,13 +25,12 @@ function message(obj){
       }
     } 
     
-    if( obj.message && window.console && console.log ) console.log(obj.message[0], obj.message[1]);
     $('#chat').append(el);
     $('#chat').scrollTop(1000000);
   }
 }
 
-function send(){
+function sendChatMsg(){
   var val = document.getElementById('text').value;
   socket.emit('message', val);
   message({ message: ['you', val] });
@@ -51,7 +50,6 @@ socket.on('message', function(obj){
 });
 
 socket.on('move', function(obj){
-  console.log('move received');
   message(obj);
 });
 
@@ -74,11 +72,12 @@ function selectPiece(piece) {
   socket.emit('move', move);
 
   //modify game board
-  $(piece).addClass("played");
-  var selectedOffset = $("#selected").offset();
-  var pieceOffset = $(piece).offset();
-  $(piece).animate({top: "+=" + (selectedOffset.top - pieceOffset.top) + "px",
-    left: "+=" + (selectedOffset.left - pieceOffset.left) + "px"}, 600);      
+  updateBoard(move);
+  // $(piece).addClass("played");
+  // var selectedOffset = $("#selected").offset();
+  // var pieceOffset = $(piece).offset();
+  // $(piece).animate({top: "+=" + (selectedOffset.top - pieceOffset.top) + "px",
+  //   left: "+=" + (selectedOffset.left - pieceOffset.left) + "px"}, 600);      
 }
 
 function placeSelected(place) {
@@ -96,11 +95,12 @@ function placeSelected(place) {
 
   //modify game board - this should probably be based on changes from the model
   //so when other players modify the game state, it is propagated from the model
-   $(place).addClass("used");
-  var selectedOffset = $("#selected").offset();
-  var placeOffset = $(place).offset();
-  $("#" + pieceId).animate({top: "+=" + (placeOffset.top - selectedOffset.top) + "px",
-    left: "+=" + (placeOffset.left - selectedOffset.left + 4) + "px"}, 600);
+  updateBoard(move);
+  //  $(place).addClass("used");
+  // var selectedOffset = $("#selected").offset();
+  // var placeOffset = $(place).offset();
+  // $("#" + pieceId).animate({top: "+=" + (placeOffset.top - selectedOffset.top) + "px",
+  //   left: "+=" + (placeOffset.left - selectedOffset.left + 4) + "px"}, 600);
 }
 
 function updateBoard(move) {
@@ -146,5 +146,5 @@ $(function() {
   $('#unplayed > img').click(function() {selectPiece($(this)); });    
   $('.piecespace').click(function() {placeSelected($(this)); });    
   $('#newgamebutton').click(function() {resetBoard(); });   
-  $('#form').submit(function() {send(); return false; });
+  $('#form').submit(function() {sendChatMsg(); return false; });
 });
