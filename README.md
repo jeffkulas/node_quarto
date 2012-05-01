@@ -20,3 +20,7 @@ run the server
 connect to the server with a web browser or 2
 
 http://localhost:3000
+
+## Features To Add
+
+[Features](https://trello.com/b/4vZ37G7v)
