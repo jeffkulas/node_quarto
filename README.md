@@ -21,6 +21,6 @@ connect to the server with a web browser or 2
 
 http://localhost:3000
 
-## Features To Add
+## To Do
 
-[Features](https://trello.com/b/4vZ37G7v)
+[To Do](https://trello.com/b/4vZ37G7v)
