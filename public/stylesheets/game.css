@@ -1,48 +1,48 @@
-#gamestatus { font-size: 1.5em; margin: 20px; position: absolute; }
-#selectedbox { border: 2px solid black; padding: 4px; margin: 20px; width: 52px; position: absolute; top: 40px;}
-#selected { border: 1px solid black; width: 50px; height: 89px;}
-#buttonbox { padding: 4px; margin: 20px; width: 52px; position: absolute; top: 250px;}
-#boardcont { padding: 20px 5px 5px 25px; top: 35px; left: 200 px; position: absolute; left: 100px; top: 36px; }
-.piecespace { border: 0px solid black; width: 50px; height: 89px; position: absolute; }
-#s1 { top: 170px; left: 46px; }
-#s2 { top: 118px; left: 101px; }
-#s3 { top: 222px; left: 101px; }
-#s4 { top: 66px; left: 156px; }
-#s5 { top: 170px; left: 156px; }
-#s6 { top: 273px; left: 156px; }
-#s7 { top: 14px; left: 211px; }
-#s8 { top: 118px; left: 211px; }
-#s9 { top: 222px; left: 211px; }
-#s10 { top: 325px; left: 211px; }
-#s11 { top: 66px; left: 266px; }
-#s12 { top: 170px; left: 266px; }
-#s13 { top: 273px; left: 266px; }
-#s14 { top: 118px; left: 321px; }
-#s15 { top: 222px; left: 321px; }
-#s16 { top: 170px; left: 376px; }
+#gamestatus { font-size: 1.5em; margin: 20px; }
+#selectedbox { border: 2px solid black; padding: 4px; margin: 20px; }
+#selected { border: 1px solid black; }
+#buttonbox { padding: 4px; margin: 20px; width: 52px; }
+#boardcont { }
+.piecespace { }
+#s1 { }
+#s2 { }
+#s3 { }
+#s4 { }
+#s5 { }
+#s6 { }
+#s7 { }
+#s8 { }
+#s9 { }
+#s10 { }
+#s11 { }
+#s12 { }
+#s13 { }
+#s14 { }
+#s15 { }
+#s16 { }
 
-#unplayed { position: absolute; top: 500px; }
-#unplayed img {position: absolute; }
-#srdh {left: 0px;}
-#srds {left: 50px;}
-#srlh {left: 100px;}
-#srls {left: 150px;}
-#ssdh {left: 200px;}
-#ssds {left: 250px;}
-#sslh {left: 300px;}
-#ssls {left: 350px;}
-#trdh {left: 400px;}
-#trds {left: 450px;}
-#trlh {left: 500px;}
-#trls {left: 550px;}
-#tsdh {left: 600px;}
-#tsds {left: 650px;}
-#tslh {left: 700px;}
-#tsls {left: 750px;}
+#unplayed { }
+#unplayed img {}
+#srdh {}
+#srds {}
+#srlh {}
+#srls {}
+#ssdh {}
+#ssds {}
+#sslh {}
+#ssls {}
+#trdh {}
+#trds {}
+#trlh {}
+#trls {}
+#tsdh {}
+#tsds {}
+#tslh {}
+#tsls {}
 
-#chat {  position: absolute; left: 600px; top: 60px; height: 368px; overflow: auto; width: 200px; border:1px solid #222; padding: 2px;}
+#chat {  overflow: auto; border:1px solid #222; padding: 2px;}
 #chat p { padding: 3px; margin: 0; }
 #chat p:nth-child(odd) { background: #C6C6C6; }
-#form {  position: absolute; top: 440px; left: 600px; width: 200px; background: #fff; }
-#form input[type=text] { width: 150px; padding: 5px; }
-#form input[type=submit] {  position: absolute; right: -4px; padding: 5px;}
+#form { background: #fff; }
+#form input[type=text] { padding: 5px; }
+#form input[type=submit] { padding: 5px;}
