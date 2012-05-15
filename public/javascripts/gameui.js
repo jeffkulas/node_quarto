@@ -41,12 +41,12 @@ var socket = io.connect();
 
 socket.on('message', function(obj){
   console.log('message received');
-  if (obj.buffer){
-    document.getElementById('form').style.display='block';
-    document.getElementById('chat').innerHTML = '';
-    
-    for (var i in obj.buffer) message(obj.buffer[i]);
-  } else message(obj);
+//  if (obj.buffer){
+//    document.getElementById('form').style.display='block';
+//    document.getElementById('chat').innerHTML = '';
+//    for (var i in obj.buffer) message(obj.buffer[i]);
+//  } else 
+    message(obj);
 });
 
 socket.on('move', function(obj){
@@ -61,11 +61,12 @@ socket.on('reconnecting', function( nextRetry ){ message({ message: ['System', '
 socket.on('reconnect_failed', function(){ message({ message: ['System', 'Reconnected to server FAILED.']})});
 
 function selectPiece(piece) {
+  console.log('selectPiece')
   if ($(piece).hasClass("played") || GAME.moveType != "select")
     return;
   //*** validate piece with local game, if already selected or played, do nothing
   //*** validate piece selection with server before moving the piece
-  var move = {moveType:"select", pieceId: $(piece).attr("id"), whoName: socket.sessionId};
+  var move = {moveType:"select", pieceId: piece, whoName: socket.sessionId};
   //update local state
   GAME.makeMove(move);
   //send move state to server
@@ -81,6 +82,7 @@ function selectPiece(piece) {
 }
 
 function placeSelected(place) {
+  console.log('placeSelected');
   if ($(place).hasClass("used") || GAME.moveType != "place")
     return;
   //*** validate piece with local game, if already selected or played, do nothing
@@ -104,11 +106,14 @@ function placeSelected(place) {
 }
 
 function updateBoard(move) {
+  console.log('updateBoard ' + move.pieceId);
   switch (move.moveType) {
     case "select":
       $("#" + move.pieceId).addClass("played");
       var selectedOffset = $("#selected").offset();
       var pieceOffset = $("#" + move.pieceId).offset();
+      $("#" + move.pieceId).addClass("moving");
+//      $("#" + move.pieceId).offset(selectedOffset);
       $("#" + move.pieceId).animate({top: "+=" + (selectedOffset.top - pieceOffset.top) + "px",
         left: "+=" + (selectedOffset.left - pieceOffset.left) + "px"}, 600);
       break;
@@ -121,9 +126,12 @@ function updateBoard(move) {
       break;
     case "reset":
       //move all pieces back to the unplayed div, and remove played class
-      $("#unplayed > img").each(function(index) {
-        $(this).animate({top: "0px", left: (index * 50) + "px"}, 300);
-        $(this).removeClass('played');});
+      $("#unplayed > object").each(function(index) {
+        $(this).animate({top: "0px", left: "0px"}, 300);
+        $(this).removeClass('played');
+        $(this).removeClass('moving');
+      });
+        
       //set all spaces unplayed
       $('.piecespace').removeClass('used');
       break;
@@ -143,8 +151,8 @@ function resetBoard() {
 }
 
 $(function() {
-  $('#unplayed > img').click(function() {selectPiece($(this)); });    
-  $('.piecespace').click(function() {placeSelected($(this)); });    
+//  $('#unplayed > object').live('click', function() {selectPiece($(this)); });    
+//  $('.piecespace').click(function() {placeSelected($(this)); });    
   $('#newgamebutton').click(function() {resetBoard(); });   
   $('#form').submit(function() {sendChatMsg(); return false; });
 });

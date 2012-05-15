@@ -1,9 +1,12 @@
-#gamestatus { font-size: 1.5em; margin: 20px; }
-#selectedbox { border: 2px solid black; padding: 4px; margin: 20px; }
+#gamestatus { }
+#selectedbox { border: 2px solid black; padding: 4px;  }
 #selected { border: 1px solid black; }
-#buttonbox { padding: 4px; margin: 20px; width: 52px; }
+#buttonbox {  }
 #boardcont { }
 .piecespace { }
+#boardcont object { border: 1px solid black;  float:left; width:22%; height:22%; margin: 0px;}
+#selected { border: 1px solid black; width:50%; height:23%; margin: 0px;}
+.moving {position: relative; }
 #s1 { }
 #s2 { }
 #s3 { }
@@ -22,7 +25,7 @@
 #s16 { }
 
 #unplayed { }
-#unplayed img {}
+#unplayed object { border: 0px solid black; float:left; width:22%; height:22%; margin: 1px;}
 #srdh {}
 #srds {}
 #srlh {}

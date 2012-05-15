@@ -1,50 +1,63 @@
-div
-  span#gamestatus Anyone may select a piece to start the game.
-div
-  div#selectedbox Selected
-    div#selected
-  div#buttonbox
-    button#newgamebutton.btn New Game
-  div#boardcont
-    img(src='images/board.png')#board
-    div#s1.piecespace
-    div#s2.piecespace
-    div#s3.piecespace
-    div#s4.piecespace
-    div#s5.piecespace
-    div#s6.piecespace
-    div#s7.piecespace
-    div#s8.piecespace
-    div#s9.piecespace
-    div#s10.piecespace
-    div#s11.piecespace
-    div#s12.piecespace
-    div#s13.piecespace
-    div#s14.piecespace
-    div#s15.piecespace
-    div#s16.piecespace
-  div#chat.well
-    p connecting...
-  form#form
-    input(type='text', autocomplete='off')#text
-    input(type='submit', value='Say')#say.btn
-div#unplayed
-  img(src='images/srdh.png')#srdh
-  img(src='images/srds.png')#srds
-  img(src='images/srlh.png')#srlh
-  img(src='images/srls.png')#srls
-  img(src='images/ssdh.png')#ssdh
-  img(src='images/ssds.png')#ssds
-  img(src='images/sslh.png')#sslh
-  img(src='images/ssls.png')#ssls
-  img(src='images/trdh.png')#trdh
-  img(src='images/trds.png')#trds
-  img(src='images/trlh.png')#trlh
-  img(src='images/trls.png')#trls
-  img(src='images/tsdh.png')#tsdh
-  img(src='images/tsds.png')#tsds
-  img(src='images/tslh.png')#tslh
-  img(src='images/tsls.png')#tsls
+div.container-fluid
+  div.row-fluid
+    div#boardcont.span4
+      object(data='images/blank.svg', type='image/svg+xml')#s1.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s2.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s3.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s4.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s5.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s6.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s7.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s8.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s9.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s10.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s11.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s12.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s13.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s14.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s15.piecespace
+      object(data='images/blank.svg', type='image/svg+xml')#s16.piecespace
+    div.span2
+      span#gamestatus Anyone may select a piece to start the game.
+      div
+        div#selectedbox Selected
+          br
+          object(data='images/blank.svg', type='image/svg+xml')#selected
+        div#buttonbox
+          button#newgamebutton.btn New Game
+    div#unplayed.span4
+      object(data='images/rsbo.svg', type='image/svg+xml')#rsbo
+        param(name='src', value='images/rsbo.svg')
+      object(data='images/rhbo.svg', type='image/svg+xml')#rhbo
+        param(name='src', value='images/rhbo.svg')
+      object(data='images/rhbb.svg', type='image/svg+xml')#rhbb
+        param(name='src', value='images/rhbb.svg')
+      object(data='images/rsbb.svg', type='image/svg+xml')#rsbb
+        param(name='src', value='images/rsbb.svg')
+      object(data='images/ssbb.svg', type='image/svg+xml')#ssbb
+        param(name='src', value='images/ssbb.svg')
+      object(data='images/ssbo.svg', type='image/svg+xml')#ssbo
+        param(name='src', value='images/ssbo.svg')
+      object(data='images/shbo.svg', type='image/svg+xml')#shbo
+        param(name='src', value='images/shbo.svg')
+      object(data='images/shbb.svg', type='image/svg+xml')#shbb
+        param(name='src', value='images/shbb.svg')
+      object(data='images/shsb.svg', type='image/svg+xml')#shsb
+        param(name='src', value='images/shsb.svg')
+      object(data='images/rsso.svg', type='image/svg+xml')#rsso
+        param(name='src', value='images/rsso.svg')
+      object(data='images/rhsb.svg', type='image/svg+xml')#rhsb
+        param(name='src', value='images/rhsb.svg')
+      object(data='images/rssb.svg', type='image/svg+xml')#rssb
+        param(name='src', value='images/rssb.svg')
+      object(data='images/sssb.svg', type='image/svg+xml')#sssb
+        param(name='src', value='images/sssb.svg')
+      object(data='images/ssso.svg', type='image/svg+xml')#ssso
+        param(name='src', value='images/ssso.svg')
+      object(data='images/shso.svg', type='image/svg+xml')#shso
+        param(name='src', value='images/shso.svg')
+      object(data='images/rhso.svg', type='image/svg+xml')#rhso
+        param(name='src', value='images/rhso.svg')
 script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js')
 script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js')
 script(src='/socket.io/socket.io.js')      
