@@ -1,11 +1,11 @@
 #gamestatus { }
 #selectedbox { border: 2px solid black; padding: 4px;  }
 #selected { border: 1px solid black; }
-#buttonbox {  }
+#buttonbox { margin: 10%; }
 #boardcont { }
 .piecespace { }
-#boardcont object { border: 1px solid black;  float:left; width:22%; height:22%; margin: 0px;}
-#selected { border: 1px solid black; width:50%; height:23%; margin: 0px;}
+#boardcont object { border: 1px solid black;  float:left; width:22%; margin: 0px;}
+#selected { border: 1px solid black; width:50%; margin: 0px;}
 .moving {position: relative; }
 #s1 { }
 #s2 { }
@@ -25,7 +25,7 @@
 #s16 { }
 
 #unplayed { }
-#unplayed object { border: 0px solid black; float:left; width:22%; height:22%; margin: 1px;}
+#unplayed object { border: 0px solid black; float:left; width:22%; margin: 1px;}
 #srdh {}
 #srds {}
 #srlh {}

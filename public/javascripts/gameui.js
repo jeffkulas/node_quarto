@@ -81,15 +81,23 @@ function selectPiece(piece) {
   //   left: "+=" + (selectedOffset.left - pieceOffset.left) + "px"}, 600);      
 }
 
-function placeSelected(place) {
+function placeSelected(placeObj) {
   console.log('placeSelected');
+  var place;
+  if (placeObj.ownerDocument && 
+      placeObj.ownerDocument.defaultView.frameElement.id) {
+    place = placeObj.ownerDocument.defaultView.frameElement.id;
+    console.log(place);
+  } else {
+    place = placeObj;
+  }
   if ($(place).hasClass("used") || GAME.moveType != "place")
     return;
   //*** validate piece with local game, if already selected or played, do nothing
   //*** validate piece selection with server before moving the piece
   //get the selected piece location and move it to the selected place
   var pieceId = GAME.selectedPieceId;
-  var move = {moveType:"place", place:$(place).attr("id"), pieceId: pieceId, whoName: socket.sessionId};
+  var move = {moveType:"place", place: place, pieceId: pieceId, whoName: socket.sessionId};
   //update local state
   GAME.makeMove(move);
   //send move to server
@@ -109,20 +117,22 @@ function updateBoard(move) {
   console.log('updateBoard ' + move.pieceId);
   switch (move.moveType) {
     case "select":
-      $("#" + move.pieceId).addClass("played");
+      var $movePiece = $("#" + move.pieceId);
+      $movePiece.addClass("played");
       var selectedOffset = $("#selected").offset();
-      var pieceOffset = $("#" + move.pieceId).offset();
-      $("#" + move.pieceId).addClass("moving");
-//      $("#" + move.pieceId).offset(selectedOffset);
-      $("#" + move.pieceId).animate({top: "+=" + (selectedOffset.top - pieceOffset.top) + "px",
+      var pieceOffset = $movePiece.offset();
+      $movePiece.addClass("moving");
+      $movePiece.animate({top: "+=" + (selectedOffset.top - pieceOffset.top) + "px",
         left: "+=" + (selectedOffset.left - pieceOffset.left) + "px"}, 600);
       break;
     case "place":
+      console.log('move.place ' + move.place);
       $("#" + move.place).addClass("used");
       var selectedOffset = $("#selected").offset();
       var placeOffset = $("#" + move.place).offset();
-      $("#" + move.pieceId).animate({top: "+=" + (placeOffset.top - selectedOffset.top) + "px",
-      left: "+=" + (placeOffset.left- selectedOffset.left + 4) + "px"}, 600);
+      console.log(placeOffset);
+      $("#" + move.pieceId).animate({top: "+=" + (placeOffset.top - selectedOffset.top + 1) + "px",
+      left: "+=" + (placeOffset.left - selectedOffset.left + 1) + "px"}, 600);
       break;
     case "reset":
       //move all pieces back to the unplayed div, and remove played class
