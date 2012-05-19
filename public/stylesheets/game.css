@@ -1,11 +1,19 @@
-#gamestatus { }
+body {  margin-top: 0.1em;
+        margin-bottom: 0.1em;
+          height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+.container-fluid,
+.row-fluid { height: inherit; }
+#gamestatus { font-size: 2em;}
 #selectedbox { border: 2px solid black; padding: 4px;  }
 #selected { border: 1px solid black; }
 #buttonbox { margin: 10%; }
 #boardcont { }
 .piecespace { }
-#boardcont object { border: 1px solid black;  float:left; width:22%; margin: 0px;}
-#selected { border: 1px solid black; width:50%; margin: 0px;}
+#boardcont object { border: 1px solid black; width: 24%; float:left; margin: 0px;}
+#selected { border: 1px solid black; width:70%; margin: 1px;}
 .moving {position: relative; }
 #s1 { }
 #s2 { }
@@ -25,7 +33,7 @@
 #s16 { }
 
 #unplayed { }
-#unplayed object { border: 0px solid black; float:left; width:22%; margin: 1px;}
+#unplayed object { border: 0px solid black; float:left; width: 24%; margin: 1px;}
 #srdh {}
 #srds {}
 #srlh {}
