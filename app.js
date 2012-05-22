@@ -6,7 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , sio = require('socket.io')
-  , GAME = require('./public/javascripts/gamelogic.js')  ;
+  , GAME = require('./public/javascripts/gamelogic.js') ;
 
 var app = module.exports = express.createServer();
 
@@ -32,7 +32,16 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.get('/game', routes.game);
+app.get('/game', function(req, res) {
+  //if :id is missing then generate an id - get the _id from mongo for the game?
+  //*** change the id generation since this can cause collisions
+  res.redirect('/game/' + Math.floor(Math.random()*1000000));
+});
+
+app.get('/game/:id', function(req, res) {
+  console.log(req.params.id);
+  res.render('game', { title: 'Quarto', gameId: req.params.id });
+});
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
@@ -52,3 +61,5 @@ io.sockets.on('connection', function(socket){
   });
 
 });
+
+

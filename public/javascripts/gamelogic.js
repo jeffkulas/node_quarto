@@ -36,7 +36,6 @@ var GAME = (function (my) {
 		};
 
 		my.restart = function() {
-			console.log('restart called');
 			this.playHistory = [];
 			this.player1 = "player1";
 			this.player2 = "player2";
