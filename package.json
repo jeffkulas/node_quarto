@@ -1,11 +1,12 @@
 {
-    "name": "application-name"
-  , "version": "0.0.1"
+    "name": "node_quarto"
+  , "version": "0.0.2"
   , "private": true
   , "dependencies": {
       "express": "2.5.8"
     , "jade": ">= 0.0.1"
     , "socket.io": "0.9.3"
-    , "connect": "1.8.6"    
+    , "connect": "1.8.6"
+    , "mongodb": "1.0.2"
   }
 }
