@@ -7,8 +7,8 @@ body {  margin-top: 0.1em;
 .container-fluid,
 .row-fluid { height: inherit; }
 #gamestatus { font-size: 1em; padding: 4px;}
-#selectedbox { border: 2px solid black; padding: 4px;  }
-#selected { border: 1px solid black; margin: 1px; }
+#selectedbox { border: 2px solid black; padding: 4px; text-align: center; }
+#selected { border: 0px solid black; margin: 1px; }
 div.span2 #selected { width:70%;  }
 div.span4 #selected { width:53%;  }
 #buttonbox { margin: 10%; }

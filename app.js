@@ -5,8 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , sio = require('socket.io')
-  , GAME = require('./public/javascripts/gamelogic.js') ;
+  , sio = require('socket.io');
 
 var app = module.exports = express.createServer();
 
@@ -38,28 +37,53 @@ app.get('/game', function(req, res) {
   res.redirect('/game/' + Math.floor(Math.random()*1000000));
 });
 
-app.get('/game/:id', function(req, res) {
-  console.log(req.params.id);
-  res.render('game', { title: 'Quarto', gameId: req.params.id });
-});
+//*** replace rooms with something from the database
+var games = {};
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
 var io = sio.listen(app)
   , playerID = 0;
-  
-io.sockets.on('connection', function(socket){
-  if (GAME.playHistory.length > 0) socket.emit('move', {playHistory : GAME.playHistory});
-  socket.playerID = playerID++;
-  
-  socket.on('move', function(move) {
-      // *** validate the move in GAME object,
-      // make sure the move from is from the right session
-      socket.broadcast.emit('move', move);
-      GAME.makeMove(move);
-  });
 
+app.get('/game/:id', function(req, res) {
+  console.log(req.params.id);
+  //create game if not in memory (should just pull from mongodb)
+  if (!games['game' + req.params.id]) {
+    var game = {};
+    game.id = req.params.id;
+    game.mem = require('./public/javascripts/gamelogic.js');
+    game.socket = io.of('/' + game.id).on('connection', function(socket) {
+      if (game.mem.playHistory.length > 0) socket.emit('move', {playHistory : game.mem.playHistory});
+      socket.playerID = playerID++; //*** player ID should be replaced by the socket session
+                                    //    or something else
+      
+      socket.on('move', function(move) {
+          // *** validate the move in GAME object,
+          // make sure the move from is from the right session
+          socket.broadcast.emit('move', move);
+          game.mem.makeMove(move);
+      });
+
+    });
+
+    games['game' + req.params.id] = game;
+  }
+
+  res.render('game', { title: 'Quarto', gameId: req.params.id });
 });
+  
+// io.sockets.on('connection', function(socket){
+//   if (GAME.playHistory.length > 0) socket.emit('move', {playHistory : GAME.playHistory});
+//   socket.playerID = playerID++;
+  
+//   socket.on('move', function(move) {
+//       // *** validate the move in GAME object,
+//       // make sure the move from is from the right session
+//       socket.broadcast.emit('move', move);
+//       GAME.makeMove(move);
+//   });
+
+// });
 
 

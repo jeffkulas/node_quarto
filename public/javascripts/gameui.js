@@ -1,4 +1,4 @@
-var socket = io.connect();
+var socket = io.connect('/' + GAMEID);
 
 socket.on('move', function(obj){
   move(obj);
